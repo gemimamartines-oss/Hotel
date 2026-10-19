@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hilton Hotel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #003580;
+            --secondary: #febb02;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            /* English style colors for the footer: Oxford Blue and Gold */
+            --english-blue: #002147; 
+            --english-gold: #C5A059; 
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #e3f2fd; /* BLUE BACKGROUND AS REQUESTED */
+        }
+
+        /* HEADER */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-login {
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #00265b;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('HOTEL.jpeg') center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 0.9rem 1.8rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 3rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* ABOUT US */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        .about-content img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* ROOMS */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .room-info {
+            padding: 1.5rem;
+        }
+
+        .room-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .room-price {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .room-features {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .room-feature {
+            background: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* MENU */
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .menu-tab.active, .menu-tab:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 140px;
+            object-fit: contain;
+            background-color: var(--light);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            padding: 10px;
+        }
+
+        .menu-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .menu-item p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-price {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        /* TOURISM */
+        .tourism-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .tourism-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .tourism-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .tourism-info {
+            padding: 1.5rem;
+        }
+
+        .tourism-distance {
+            color: var(--success);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* MODAL LOGIN */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #00265b;
+        }
+
+        .modal-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-tab {
+            flex: 1;
+            padding: 0.8rem;
+            background: var(--light);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .modal-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* FOOTER - ENGLISH STYLE (Oxford Blue + Gold) */
+        footer {
+            background: var(--english-blue);
+            color: #f8f9fa;
+            padding: 3rem 5% 1rem;
+            border-top: 4px solid var(--english-gold);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--english-gold);
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--english-gold);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #f8f9fa;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--english-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(197, 160, 89, 0.3);
+            color: #a0aec0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-hotel"></i> Hilton Hotel
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#restaurant">Restaurant</a></li>
+                <li><a href="#tourism">Local Attractions</a></li>
+            </ul>
+            <button class="btn-login" onclick="openModal()">
+                <i class="fas fa-user"></i> Login
+            </button>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Hilton Hotel</h1>
+            <p>Luxury, comfort, and the best hospitality experience</p>
+            <button class="btn-primary" onclick="document.getElementById('rooms').scrollIntoView()">
+                Book Now
+            </button>
+        </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about">
+        <h2>About Our Hotel</h2>
+        <p class="section-subtitle">Over 50 years providing unforgettable experiences</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>Hilton Hotel is synonymous with excellence and world-class service. Located in the heart of the city, we offer top-notch facilities with spectacular views and personalized 24-hour attention.</p>
+                <p>Our commitment is to make every stay a memorable experience, combining elegance, comfort, and cutting-edge technology to meet the needs of our most demanding guests.</p>
+                <p>We have 300 rooms and suites, 5 restaurants, a luxury spa, a fully equipped gym, and halls for corporate and social events.</p>
+            </div>
+            <div>
+                <img src="nosotros.jpeg" alt="Hilton Hotel Interior">
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-star"></i>
+                <h3>5 Stars</h3>
+                <p>International quality certification</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-wifi"></i>
+                <h3>Free WiFi</h3>
+                <p>High-speed internet throughout the hotel</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-concierge-bell"></i>
+                <h3>24/7 Service</h3>
+                <p>Personalized attention all day</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROOMS -->
+    <section id="rooms">
+        <h2>Our Rooms</h2>
+        <p class="section-subtitle">Comfort and elegance in every detail</p>
+
+        <div class="rooms-grid">
+            <div class="room-card">
+                <img src="1.jpeg" alt="Standard Room">
+                <div class="room-info">
+                    <h3>Standard Room</h3>
+                    <p>Comfortable room with all basic amenities for a pleasant stay.</p>
+                    <div class="room-features">
+                        <span class="room-feature"><i class="fas fa-bed"></i> Queen Bed</span>
+                        <span class="room-feature"><i class="fas fa-users"></i> 2 guests</span>
+                        <span class="room-feature"><i class="fas fa-wifi"></i> WiFi</span>
+                    </div>
+                    <div class="room-price">L 2,500 / night</div>
+                    <button class="btn-primary" style="width: 100%;">Book Now</button>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="2.jpeg" alt="Deluxe Room">
+                <div class="room-info">
+                    <h3>Deluxe Room</h3>
+                    <p>Spacious room with city view and premium amenities.</p>
+                    <div class="room-features">
+                        <span class="room-feature"><i class="fas fa-bed"></i> King Bed</span>
+                        <span class="room-feature"><i class="fas fa-users"></i> 2 guests</span>
+                        <span class="room-feature"><i class="fas fa-bath"></i> Jacuzzi</span>
+                    </div>
+                    <div class="room-price">L 3,800 / night</div>
+                    <button class="btn-primary" style="width: 100%;">Book Now</button>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="3.jpeg" alt="Presidential Suite">
+                <div class="room-info">
+                    <h3>Presidential Suite</h3>
+                    <p>The most exclusive experience with a living room, dining area, and private terrace.</p>
+                    <div class="room-features">
+                        <span class="room-feature"><i class="fas fa-bed"></i> King Bed</span>
+                        <span class="room-feature"><i class="fas fa-users"></i> 4 guests</span>
+                        <span class="room-feature"><i class="fas fa-hot-tub"></i> Private Spa</span>
+                    </div>
+                    <div class="room-price">L 8,500 / night</div>
+                    <button class="btn-primary" style="width: 100%;">Book Now</button>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="4.jpeg" alt="Family Room">
+                <div class="room-info">
+                    <h3>Family Room</h3>
+                    <p>Ideal space for families, with comfort and fun for all members.</p>
+                    <div class="room-features">
+                        <span class="room-feature"><i class="fas fa-bed"></i> 2 Double Beds</span>
+                        <span class="room-feature"><i class="fas fa-users"></i> 4 guests</span>
+                        <span class="room-feature"><i class="fas fa-tv"></i> Smart TV</span>
+                    </div>
+                    <div class="room-price">L 3,200 / night</div>
+                    <button class="btn-primary" style="width: 100%;">Book Now</button>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="5.jpeg" alt="Executive Suite">
+                <div class="room-info">
+                    <h3>Executive Suite</h3>
+                    <p>Designed for the business traveler with an ergonomic desk and high-speed connection.</p>
+                    <div class="room-features">
+                        <span class="room-feature"><i class="fas fa-bed"></i> King Bed</span>
+                        <span class="room-feature"><i class="fas fa-users"></i> 2 guests</span>
+                        <span class="room-feature"><i class="fas fa-briefcase"></i> Desk</span>
+                    </div>
+                    <div class="room-price">L 5,500 / night</div>
+                    <button class="btn-primary" style="width: 100%;">Book Now</button>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="6.jpeg" alt="Luxury Penthouse">
+                <div class="room-info">
+                    <h3>Luxury Penthouse</h3>
+                    <p>Maximum exclusivity on the top floor with a 360-degree panoramic city view.</p>
+                    <div class="room-features">
+                        <span class="room-feature"><i class="fas fa-bed"></i> 3 Bedrooms</span>
+                        <span class="room-feature"><i class="fas fa-users"></i> 6 guests</span>
+                        <span class="room-feature"><i class="fas fa-glass-cheers"></i> Private Terrace</span>
+                    </div>
+                    <div class="room-price">L 12,000 / night</div>
+                    <button class="btn-primary" style="width: 100%;">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESTAURANT -->
+    <section id="restaurant" style="background: var(--light);">
+        <h2>Our Restaurant</h2>
+        <p class="section-subtitle">World-class gastronomy</p>
+
+        <div class="menu-categories">
+            <button class="menu-tab active" onclick="showMenu('breakfast')">Breakfast</button>
+            <button class="menu-tab" onclick="showMenu('lunch')">Lunch</button>
+            <button class="menu-tab" onclick="showMenu('dinner')">Dinner</button>
+            <button class="menu-tab" onclick="showMenu('beverages')">Beverages</button>
+        </div>
+
+        <!-- BREAKFAST -->
+        <div id="menu-breakfast" class="menu-grid">
+            <div class="menu-item">
+                <img src="7.jpeg" alt="American Breakfast">
+                <h4>American Breakfast</h4>
+                <p>Eggs to order, bacon, toast, orange juice, and coffee</p>
+                <div class="menu-item-price">L 350</div>
+            </div>
+            <div class="menu-item">
+                <img src="8.jpeg" alt="Pancakes with Fruit">
+                <h4>Pancakes with Fruit</h4>
+                <p>Fluffy pancakes with fresh fruit, maple syrup, and cream</p>
+                <div class="menu-item-price">L 280</div>
+            </div>
+            <div class="menu-item">
+                <img src="9.jpeg" alt="Special Omelette">
+                <h4>Special Omelette</h4>
+                <p>Omelette with ham, cheese, mushrooms, and fresh vegetables</p>
+                <div class="menu-item-price">L 320</div>
+            </div>
+            <div class="menu-item">
+                <img src="10.jpeg" alt="Tropical Fruits">
+                <h4>Tropical Fruits</h4>
+                <p>Selection of fresh seasonal fruits with Greek yogurt</p>
+                <div class="menu-item-price">L 250</div>
+            </div>
+        </div>
+
+        <!-- LUNCH -->
+        <div id="menu-lunch" class="menu-grid" style="display: none;">
+            <div class="menu-item">
+                <img src="11.jpeg" alt="Filet Mignon">
+                <h4>Filet Mignon</h4>
+                <p>Premium beef steak with mashed potatoes and grilled vegetables</p>
+                <div class="menu-item-price">L 650</div>
+            </div>
+            <div class="menu-item">
+                <img src="12.jpeg" alt="Grilled Salmon">
+                <h4>Grilled Salmon</h4>
+                <p>Fresh salmon with lemon risotto and asparagus</p>
+                <div class="menu-item-price">L 600</div>
+            </div>
+            <div class="menu-item">
+                <img src="13.jpeg" alt="Alfredo Pasta">
+                <h4>Alfredo Pasta</h4>
+                <p>Fettuccine with creamy sauce, chicken, and mushrooms</p>
+                <div class="menu-item-price">L 400</div>
+            </div>
+            <div class="menu-item">
+                <img src="14.jpeg" alt="Caesar Salad">
+                <h4>Caesar Salad</h4>
+                <p>Romaine lettuce, grilled chicken, croutons, and Caesar dressing</p>
+                <div class="menu-item-price">L 350</div>
+            </div>
+        </div>
+
+        <!-- DINNER -->
+        <div id="menu-dinner" class="menu-grid" style="display: none;">
+            <div class="menu-item">
+                <img src="15.jpeg" alt="Lobster Thermidor">
+                <h4>Lobster Thermidor</h4>
+                <p>Gratinated lobster with creamy sauce and Gruyère cheese</p>
+                <div class="menu-item-price">L 1,100</div>
+            </div>
+            <div class="menu-item">
+                <img src="16.jpeg" alt="BBQ Ribs">
+                <h4>BBQ Ribs</h4>
+                <p>Pork ribs with smoky BBQ sauce and rustic potatoes</p>
+                <div class="menu-item-price">L 750</div>
+            </div>
+            <div class="menu-item">
+                <img src="17.jpeg" alt="Duck Confit">
+                <h4>Duck Confit</h4>
+                <p>Duck confit with sweet potato puree and red wine reduction</p>
+                <div class="menu-item-price">L 900</div>
+            </div>
+            <div class="menu-item">
+                <img src="18.jpeg" alt="Seafood Risotto">
+                <h4>Seafood Risotto</h4>
+                <p>Arborio rice with shrimp, squid, and mussels</p>
+                <div class="menu-item-price">L 700</div>
+            </div>
+        </div>
+
+        <!-- BEVERAGES -->
+        <div id="menu-beverages" class="menu-grid" style="display: none;">
+            <div class="menu-item">
+                <img src="19.jpeg" alt="Select Wines">
+                <h4>Select Wines</h4>
+                <p>Glass of red or white wine from our premium selection</p>
+                <div class="menu-item-price">L 350</div>
+            </div>
+            <div class="menu-item">
+                <img src="20.jpeg" alt="Classic Cocktails">
+                <h4>Classic Cocktails</h4>
+                <p>Martini, Mojito, Margarita, or Daiquiri prepared by our bartender</p>
+                <div class="menu-item-price">L 180</div>
+            </div>
+            <div class="menu-item">
+                <img src="21.jpeg" alt="Craft Beers">
+                <h4>Craft Beers</h4>
+                <p>Selection of local and international beers</p>
+                <div class="menu-item-price">L 150</div>
+            </div>
+            <div class="menu-item">
+                <img src="22.jpeg" alt="Soft Drinks and Juices">
+                <h4>Soft Drinks and Juices</h4>
+                <p>Variety of non-alcoholic beverages and natural juices</p>
+                <div class="menu-item-price">L 50</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOURISM -->
+    <section id="tourism">
+        <h2>Nearby Tourist Attractions</h2>
+        <p class="section-subtitle">Discover the best destinations near our hotel</p>
+
+        <div class="tourism-grid">
+            <div class="tourism-card">
+                <img src="23.jpeg" alt="National Art Museum">
+                <div class="tourism-info">
+                    <h3>National Art Museum</h3>
+                    <p>Contemporary art collection and temporary exhibitions by international artists.</p>
+                    <div class="tourism-distance">
+                        <i class="fas fa-map-marker-alt"></i> 500m from the hotel
+                    </div>
+                </div>
+            </div>
+
+            <div class="tourism-card">
+                <img src="24.jpeg" alt="Central Park">
+                <div class="tourism-info">
+                    <h3>Central Park</h3>
+                    <p>Beautiful park with gardens, fountains, and recreation areas for the whole family.</p>
+                    <div class="tourism-distance">
+                        <i class="fas fa-map-marker-alt"></i> 800m from the hotel
+                    </div>
+                </div>
+            </div>
+
+            <div class="tourism-card">
+                <img src="25.jpeg" alt="Historic Center">
+                <div class="tourism-info">
+                    <h3>Historic Center</h3>
+                    <p>Colonial architecture, old squares, and historical monuments of the city.</p>
+                    <div class="tourism-distance">
+                        <i class="fas fa-map-marker-alt"></i> 1.2km from the hotel
+                    </div>
+                </div>
+            </div>
+
+            <div class="tourism-card">
+                <img src="28.jpeg" alt="Paradise Beach">
+                <div class="tourism-info">
+                    <h3>Paradise Beach</h3>
+                    <p>White sand beach with crystal clear waters, perfect for relaxing.</p>
+                    <div class="tourism-distance">
+                        <i class="fas fa-map-marker-alt"></i> 2km from the hotel
+                    </div>
+                </div>
+            </div>
+
+            <div class="tourism-card">
+                <img src="26.jpeg" alt="Craft Market">
+                <div class="tourism-info">
+                    <h3>Craft Market</h3>
+                    <p>Local crafts, typical products, and traditional food from the region.</p>
+                    <div class="tourism-distance">
+                        <i class="fas fa-map-marker-alt"></i> 1.5km from the hotel
+                    </div>
+                </div>
+            </div>
+
+            <div class="tourism-card">
+                <img src="27.jpeg" alt="Metropolitan Cathedral">
+                <div class="tourism-info">
+                    <h3>Metropolitan Cathedral</h3>
+                    <p>Stunning Gothic architecture with stained glass and religious artwork.</p>
+                    <div class="tourism-distance">
+                        <i class="fas fa-map-marker-alt"></i> 900m from the hotel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-hotel"></i> Hilton Hotel</h3>
+                <p>Your home away from home. We offer the best hospitality experience with world-class service.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Bella Vista Neighborhood, Main Street, 21101 Santa Cruz de Yojoa, Cortés</li>
+                    <li><i class="fas fa-phone"></i> +504 95625869</li>
+                    <li><i class="fas fa-envelope"></i> info@hotelhilton.hn</li>
+                    <li><i class="fas fa-clock"></i> 24/7 Reception</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#restaurant">Restaurant</a></li>
+                    <li><a href="#tourism">Local Attractions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Spa & Wellness</a></li>
+                    <li><a href="#">Gym</a></li>
+                    <li><a href="#">Event Halls</a></li>
+                    <li><a href="#">Transportation</a></li>
+                    <li><a href="#">Guided Tours</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hilton Hotel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL LOGIN -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            
+            <div class="modal-tabs">
+                <button class="modal-tab active" onclick="switchTab('login')">Login</button>
+                <button class="modal-tab" onclick="switchTab('register')">Register</button>
+            </div>
+
+            <div id="loginForm">
+                <h2>Welcome Back</h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Login</button>
+                </form>
+            </div>
+
+            <div id="registerForm" style="display: none;">
+                <h2>Create Account</h2>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="registerName">Full Name</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPhone">Phone</label>
+                        <input type="tel" id="registerPhone" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Functions
+        function openModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+
+        function switchTab(tab) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const tabs = document.querySelectorAll('.modal-tab');
+
+            tabs.forEach(t => t.classList.remove('active'));
+
+            if (tab === 'login') {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+                tabs[0].classList.add('active');
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+                tabs[1].classList.add('active');
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            alert(`Welcome back! You have logged in as: ${email}`);
+            closeModal();
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            const name = document.getElementById('registerName').value;
+            alert(`Account created successfully! Welcome ${name}`);
+            closeModal();
+        }
+
+        // Menu Functions
+        function showMenu(category) {
+            const menus = document.querySelectorAll('[id^="menu-"]');
+            const tabs = document.querySelectorAll('.menu-tab');
+
+            menus.forEach(menu => menu.style.display = 'none');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            document.getElementById(`menu-${category}`).style.display = 'grid';
+            event.target.classList.add('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
